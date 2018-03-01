@@ -6,9 +6,13 @@
     <script type="text/javascript" src="model.js"></script>
   </head>
   <body style="background-color: #bbb;" onload="createEmptyOrder();">
+  
+     <h1 style="color: red;">eVeg Secure Payment</h1>
+  
     <form onsubmit="setName();setAddress();setCardDetails();window.open('invoice.html');self.close();" >
       <table>
        <tr>
+	  <b>All fields required</b>
          <td>
            Title: <input type="text" name="title" id="title" value="" style="background-color: #FFFFFF; width: 20px;" required/>
            First Name: <input type="text" name="firstname" id="firstname" value="" style="background-color: #FFFFFF; width: 120px;" required/>
@@ -17,7 +21,7 @@
        </tr>
        <tr>
          <td>
-           Number: <input type="text" name="number" id="number" value="" style="background-color: #FFFFFF; width: 30px;" required/>
+           House No: <input type="text" name="number" id="number" value="" style="background-color: #FFFFFF; width: 30px;" required/>
            Street: <input type="text" name="street" id="street" value="" style="background-color: #FFFFFF; width: 120px;" required/>
          </td>
        </tr>
@@ -31,8 +35,8 @@
        <tr>
          <td>
            Card Type: <div style="display: inline-block;"><input type="radio" name="cardtype" id="solo" value="Solo" /> Solo<br /><input type="radio" name="cardtype" id="switch" value="Switch" /> Switch<br /><input type="radio" name="cardtype" id="mastercard" value="Mastercard" /> Mastercard<br /><input type="radio" name="cardtype" id="visa" value="Visa" required/> Visa</div> 
-           Card Number: <input type="text" name="cardnumber" id="cardnumber" value="" style="background-color: #FFFFFF; width: 130px;" placeholder="0000 0000 0000 0000" required/>
-           Expiry Date: <input type="text" name="month" id="month" value="" style="background-color: #FFFFFF; width: 25px;" placeholder="MM" required/> <input type="text" name="year" id="year" value="" style="background-color: #FFFFFF; width: 40px;" placeholder="YYYY" required/>
+           Card Number: <input type="text" name="cardnumber" id="cardnumber" value="" style="background-color: #FFFFFF; width: 140px;" placeholder="0000 0000 0000 0000" required/>
+           Expiry Date: <input type="text" name="month" id="month" value="" style="background-color: #FFFFFF; width: 25px;" placeholder="MM" required/> <input type="text" name="year" id="year" value="" style="background-color: #FFFFFF; width: 32px;" placeholder="YYYY" required/>
          </td>
        </tr>
        <tr>
@@ -43,5 +47,8 @@
        </tr>
       </table>
     </form>
+      <h2 style="color: green;">
+	&copy; 2014 InterVeg Coventry Ltd.
+      </h2>
   </body>
 </html>
