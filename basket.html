@@ -86,6 +86,7 @@
                 document.write('         <td>&pound;' + productDetails[product]["price"] + '</td>\n');
                 document.write('         <td><input name="' + product + '" id="' + product + '" type="text" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
                 document.write('         <td><input class="btn btn-primary" name="change' + product + '" type="button" value="change quantity" onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value); history.go(0); countbasketItems()" /></td>\n');
+                document.write('         <td><input class="btn btn-danger" name="undo' + product + '" type="button" value="x" onclick="javascript:changeProductQuantity(\'' + product + '\', 0); history.go(0); countbasketItems()" /></td>\n');
                 document.write('       </tr>\n');
               }
             }
