@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" src="model.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+</head>
+
+<body class="bg-light">
+  <header>
+    <div class="bg-dark collapse" id="navbarHeader" style="">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="#" class="text-white">Follow on Twitter</a></li>
+              <li><a href="#" class="text-white">Like on Facebook</a></li>
+              <li><a href="#" class="text-white">Email me</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg fixed-top navbar navbar-dark bg-dark">
+      <div class="container d-flex justify-content-between">
+        <a class="navbar-brand" href="#">eVeg</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" onclick="self.close();" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+          <div class="flex-row ml-md-auto d-none d-md-flex">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a target="_blank" class="nav-link" name="viewbasket" value="View Basket">Basket <i class="fas fa-shopping-cart fa-lg"></i> <span id="basketCount" class="badge badge-secondary">New</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main role="main">
+    <section class="jumbotron text-center">
+      <div class="container">
+        <h1 class="jumbotron-heading">My Basket</h1>
+      </div>
+    </section>
+    <div class="container">
+      <form>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Item name</th>
+              <th scope="col">Unit</th>
+              <th scope="col">Price per unit</th>
+              <th scope="col"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <script>
+            var basket = readBasket();
+            var productDetails = getProductDetails();
+            for (var product in productDetails) {
+              if (basket[product] > 0) {
+                document.write('       <tr>\n');
+                document.write('         <td><img src="img/' + productDetails[product]["image"] + '" /></td>\n');
+                document.write('         <td>' + productDetails[product]["name"] + '</td>\n');
+                document.write('         <td>' + productDetails[product]["units"] + '</td>\n');
+                document.write('         <td>&pound;' + productDetails[product]["price"] + '</td>\n');
+                document.write('         <td><input name="' + product + '" id="' + product + '" type="text" value="' + basket[product] + '" style="width: 50px;" /></td>\n');
+                document.write('         <td><input class="btn btn-primary" name="change' + product + '" type="button" value="change quantity" onclick="javascript:changeProductQuantity(\'' + product + '\', document.getElementById(\'' + product + '\').value); countbasketItems()" /></td>\n');
+                document.write('       </tr>\n');
+              }
+            }
+          </script>
+        </table>
+      </form>
+
+      <div>
+        <script>
+        
+        
+        
+        function countbasketItems() {
+      var basket = readBasket();
+      var productDetails = getProductDetails();
+      quant = 0;
+      for (var product in productDetails) {
+        if (basket[product] > 0) {
+          quant += parseInt(basket[product]);
+        }
+      }
+      $('#basketCount').text(parseInt(quant));
+    }
+    
+          var totals = calculateTotals();
+          document.write('<div class="float-right"><p><span> Total ex VAT: ' + totals["totalnovat"] + ' </span><br/>\n');
+          document.write('<span>Includes VAT: ' + totals["vat"] + '</span></p>\n');
+          document.write('<p><strong>Total inc. VAT: ' + totals["total"] + '</strong></p></div>\n');
+        </script>
+        <form>
+          <input class="btn btn-primary"type="button" name="continue" value="Continue Shopping" onclick="self.close();" />
+          <input class="btn btn-danger"type="button" name="clearbasket" value="Clear Basket" onclick="javascript:createEmptyBasket();self.close();" />
+          <input class="btn btn-success" type="button" name="order" value="Order" onclick="window.open('order.html');self.close();" />
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
