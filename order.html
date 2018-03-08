@@ -69,7 +69,7 @@
                   Card Number:
                </td>
                <td align="right">
-                  <input type="text" name="cardnumber" id="cardnumber" value="" style="background-color: #FFFFFF; width: 170px;" placeholder="0000 0000 0000 0000" required/>
+                  <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="cardnumber" id="cardnumber" value="" style="background-color: #FFFFFF; width: 170px;" placeholder="0000 0000 0000 0000" required/>
                </td>
             </tr>
             <tr>
@@ -93,8 +93,8 @@
                   Expiry Date:
                </td>
                <td align="right">
-                  <input type="text" name="month" id="month" value="" style="background-color: #FFFFFF; width: 60px;" placeholder="MM" required/> /
-                  <input type="text" name="year" id="year" value="" style="background-color: #FFFFFF; width: 60px;" placeholder="YYYY" required/>
+                  <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="month" id="month" value="" style="background-color: #FFFFFF; width: 60px;" placeholder="MM" required/> /
+                  <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' name="year" id="year" value="" style="background-color: #FFFFFF; width: 60px;" placeholder="YYYY" required/>
                </td>
             </tr>
             <tr>
