@@ -6,42 +6,114 @@
     <script type="text/javascript" src="model.js"></script>
   </head>
   <body style="background-color: #bbb;" onload="createEmptyOrder();">
-  
-     <h1 style="color: red;">eVeg Secure Payment</h1>
-  
+    <h1 style="color: red;">eVeg Secure Payment</h1>
+    <b> All fields required.</b>
     <form onsubmit="setName();setAddress();setCardDetails();window.open('invoice.html');self.close();" >
       <table>
-       <tr>
-	  <b>All fields required</b>
-         <td>
-           Title: <input type="text" name="title" id="title" value="" style="background-color: #FFFFFF; width: 20px;" required/>
-           First Name: <input type="text" name="firstname" id="firstname" value="" style="background-color: #FFFFFF; width: 120px;" required/>
-           Surname: <input type="text" name="surname" id="surname" value="" style="background-color: #FFFFFF; width: 120px;" required/>
-         </td>
+	<tr>
+	  <td align="left">
+	    Country: 
+	  </td>
+	  <td align="right">
+	    <input type="text" name="country" id="country" value="" style="background-color: #FFFFFF; width: 140px;" required/>	
+	  </td>
        </tr>
        <tr>
-         <td>
-           House No: <input type="text" name="number" id="number" value="" style="background-color: #FFFFFF; width: 30px;" required/>
-           Street: <input type="text" name="street" id="street" value="" style="background-color: #FFFFFF; width: 120px;" required/>
+	    <td align="left">
+	    Card Number: 
+	    </td>
+	    <td align="right">
+	    <input type="text" name="cardnumber" id="cardnumber" value="" style="background-color: #FFFFFF; width: 140px;" placeholder="0000 0000 0000 0000" required/>
+	    </td>
+	  </tr>
+	  <tr>
+	  <td>
+	    Card Type:
+	    </td>
+	  </tr>
+	  <tr>
+	  <td>
+<!-- 	  Pictures would be nice! -->
+	    <div style="display: inline-block;"> 
+	    <input type="radio" name="cardtype" id="visa" value="Visa" required/> 
+	    Visa &nbsp;
+	    <input type="radio" name="cardtype" id="mastercard" value="Mastercard" /> 
+	    Mastercard &nbsp;   
+	    <input type="radio" name="cardtype" id="switch" value="Switch" /> 
+	    Switch &nbsp;   
+	    <input type="radio" name="cardtype" id="solo" value="Solo" /> 
+	    Solo </br>
+	    
+	    
+	    
+	    </div> 
+	  </td>
+	  </tr>
+	  <tr>
+	  <td align="left">
+	    Expiry Date: 
+	    </td>
+	    <td align="right">
+	    <input type="text" name="month" id="month" value="" style="background-color: #FFFFFF; width: 40px;" placeholder="MM" required/> 
+	    /
+	    <input type="text" name="year" id="year" value="" style="background-color: #FFFFFF; width: 40px;" placeholder="YYYY" required/>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td align="left">
+	    First Name: 
+	    </td>
+	    <td align="right">
+	    <input type="text" name="firstname" id="firstname" value="" style="background-color: #FFFFFF; width: 140px;" required/>
+	  </td>
+	  </tr>
+	  <td align="left">
+	    Surname: 
+	    </td>
+	    <td align="right">
+	    <input type="text" name="surname" id="surname" value="" style="background-color: #FFFFFF; width: 140px;" required/>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td align="left">
+	    Address Line 1: 
+	    </td>
+	    <td align="right">
+	    <input type="text" name="number" id="number" value="" style="background-color: #FFFFFF; width: 140px;" required/>
+	    </td>
+	  </tr>
+	  <tr>
+	  <td align="left">
+            Address Line 2: 
+            </td>
+            <td align="right">
+            <input type="text" name="street" id="street" value="" style="background-color: #FFFFFF; width: 140px;" required/>
+	  </td>
+	  </tr>
+	  <tr>
+	  <td align="left">
+           Postal code: 
+           </td>
+           <td align="right">
+           <input type="text" name="postcode" id="postcode" value="" style="background-color: #FFFFFF; width: 140px;" required/>
+           </td>
+	  </tr>
+	  <tr>
+	  <td align="left">
+           City: 
+           </td>
+           <td align="right">
+           <input type="text" name="city" id="city" value="" style="background-color: #FFFFFF; width: 140px;" required/>
+
          </td>
        </tr>
+
+       
        <tr>
-         <td>
-           Postcode: <input type="text" name="postcode" id="postcode" value="" style="background-color: #FFFFFF; width: 60px;" required/>
-           City: <input type="text" name="city" id="city" value="" style="background-color: #FFFFFF; width: 120px;" required/>
-           Country: <input type="text" name="country" id="country" value="" style="background-color: #FFFFFF; width: 120px;" required/>
-         </td>
-       </tr>
-       <tr>
-         <td>
-           Card Type: <div style="display: inline-block;"><input type="radio" name="cardtype" id="solo" value="Solo" /> Solo<br /><input type="radio" name="cardtype" id="switch" value="Switch" /> Switch<br /><input type="radio" name="cardtype" id="mastercard" value="Mastercard" /> Mastercard<br /><input type="radio" name="cardtype" id="visa" value="Visa" required/> Visa</div> 
-           Card Number: <input type="text" name="cardnumber" id="cardnumber" value="" style="background-color: #FFFFFF; width: 140px;" placeholder="0000 0000 0000 0000" required/>
-           Expiry Date: <input type="text" name="month" id="month" value="" style="background-color: #FFFFFF; width: 25px;" placeholder="MM" required/> <input type="text" name="year" id="year" value="" style="background-color: #FFFFFF; width: 32px;" placeholder="YYYY" required/>
-         </td>
-       </tr>
-       <tr>
-         <td style="text-align: center;">
-           <input type="button" name="go back" value="Go Back" onclick="self.close()" />
+         <td style="text-align: left;">
+           <input type="button" name="go back" value="Go Back" onclick="javascript:checkClose();" />
+           </td>
+           <td style="text-align: right;">
            <input type="submit" name="proceed" value="Proceed"/>
          </td>
        </tr>
