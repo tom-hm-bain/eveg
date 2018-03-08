@@ -203,6 +203,13 @@ function setCardDetails() {
   document.cookie="year=" + document.getElementById('year').value + ";path=/";
 }
 
+function checkClose() {
+  if (window.confirm("Are you sure?")) {
+    window.open('basket.html');
+    window.close();
+  }
+}
+
 function getCardDetails() {
   var cardDetails = {};
   cardDetails["cardtype"] = getCookieVariableValue('cardtype');
