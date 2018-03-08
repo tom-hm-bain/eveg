@@ -3,56 +3,56 @@ function getProductDetails() {
   productDetails["carrots"] = {};
   productDetails["carrots"]["image"] = "carrots.gif";
   productDetails["carrots"]["name"] = "Carrots";
-  productDetails["carrots"]["description"] = "not just for rabbits";
+  productDetails["carrots"]["description"] = "West Midlands carrots";
   productDetails["carrots"]["units"] = "1kg";
   productDetails["carrots"]["price"] = 0.99;
 
   productDetails["bananas"] = {};
   productDetails["bananas"]["image"] = "bananas.gif";
   productDetails["bananas"]["name"] = "Bananas";
-  productDetails["bananas"]["description"] = "Yellow and banana-shaped";
+  productDetails["bananas"]["description"] = "Fairtrade bananas, loose";
   productDetails["bananas"]["units"] = "500g";
   productDetails["bananas"]["price"] = 1.29;
 
   productDetails["coconut"] = {};
   productDetails["coconut"]["image"] = "coconut.gif";
   productDetails["coconut"]["name"] = "Coconut";
-  productDetails["coconut"]["description"] = "That exotic stuff";
+  productDetails["coconut"]["description"] = "Coconut (whole), Ivory Coast";
   productDetails["coconut"]["units"] = "1";
   productDetails["coconut"]["price"] = 2.99;
 
   productDetails["apples"] = {};
   productDetails["apples"]["image"] = "apples.gif";
   productDetails["apples"]["name"] = "Apples";
-  productDetails["apples"]["description"] = "Red, sweet and juicy";
+  productDetails["apples"]["description"] = "Gala Apples";
   productDetails["apples"]["units"] = "1kg";
   productDetails["apples"]["price"] = 1.49;
 
   productDetails["cherries"] = {};
   productDetails["cherries"]["image"] = "cherries.gif";
   productDetails["cherries"]["name"] = "Cherries";
-  productDetails["cherries"]["description"] = "Cherry pancake anyone?";
+  productDetails["cherries"]["description"] = "Punnet of cherries, Argentina";
   productDetails["cherries"]["units"] = "500g";
   productDetails["cherries"]["price"] = 1.99;
 
   productDetails["tomatoes"] = {};
   productDetails["tomatoes"]["image"] = "tomatoes.gif";
   productDetails["tomatoes"]["name"] = "Tomatoes";
-  productDetails["tomatoes"]["description"] = "Red and ripe";
+  productDetails["tomatoes"]["description"] = "Sweet vine-ripened tomatoes";
   productDetails["tomatoes"]["units"] = "500g";
   productDetails["tomatoes"]["price"] = 1.99;
 
   productDetails["potatoes"] = {};
   productDetails["potatoes"]["image"] = "potatoes.gif";
   productDetails["potatoes"]["name"] = "Potatoes";
-  productDetails["potatoes"]["description"] = "Boil them, bake them, mash them...";
+  productDetails["potatoes"]["description"] = "Maris Piper potatoes";
   productDetails["potatoes"]["units"] = "1kg";
   productDetails["potatoes"]["price"] = 0.99;
 
   productDetails["beans"] = {};
   productDetails["beans"]["image"] = "beans.gif";
   productDetails["beans"]["name"] = "Beans";
-  productDetails["beans"]["description"] = "Green and healthy";
+  productDetails["beans"]["description"] = "Fine whole green beans";
   productDetails["beans"]["units"] = "1kg";
   productDetails["beans"]["price"] = 1.29;
 
@@ -97,9 +97,9 @@ function calculateTotals() {
   }
 
   totals = {};
-  totals["total"] = total.toString();
-  totals["vat"] = (total - total / 1.175).toString();
-  totals["totalnovat"] = (total / 1.175).toString();
+  totals["total"] = total.toFixed(2).toString();
+  totals["vat"] = (total - total / 1.175).toFixed(2).toString();
+  totals["totalnovat"] = (total / 1.175).toFixed(2).toString();
 
   return totals;
 }
@@ -120,15 +120,20 @@ function removeProductFromBasket(product) {
 }
 
 function changeProductQuantity(product, newquantity) {
-  document.cookie = product + "=" + newquantity.toString() + ";path=/";
+  if (newquantity > -1) {
+    document.cookie = product + "=" + newquantity.toString() + ";path=/";
+  }
 }
 
 function createEmptyBasket() {
-  products = getProductList();
+  if(window.confirm("Are you sure?")){
+    products = getProductList();
   var productcount = products.length;
   for (var i = 0; i < productcount; i++) {
     document.cookie=products[i] + "=0;path=/";
+    }
   }
+  
 }
 
 function createEmptyOrder() {
@@ -178,12 +183,6 @@ function getAddress() {
   address["country"] = getCookieVariableValue('country');
 
   return address;
-}
-
-function checkClose() {
-  if (window.confirm("Are you sure?")) {
-    window.open('basket.html');
-  }
 }
 
 function setCardDetails() {
